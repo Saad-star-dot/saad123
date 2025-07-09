@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>تفاصيل فيلم فاصل من اللحظات اللذيذة</title>
+  <style>
+    body {
+      background-color: #111;
+      color: #fff;
+      direction: rtl;
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+
+    .back-link {
+      color: #f90;
+      text-decoration: none;
+      display: inline-block;
+      margin-bottom: 20px;
+    }
+
+    .movie-detail-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .movie-detail-container img {
+      width: 300px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+
+    .movie-title {
+      font-size: 28px;
+      color: #f90;
+      margin-bottom: 10px;
+    }
+
+    .movie-description {
+      max-width: 700px;
+      line-height: 1.6;
+      font-size: 16px;
+      color: #ccc;
+      margin-bottom: 30px;
+    }
+
+    .video-container {
+      width: 100%;
+      max-width: 800px;
+      margin: 0 auto 20px;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    }
+
+    iframe {
+      width: 100%;
+      height: 480px;
+      border: none;
+    }
+
+    .download-button {
+      display: block;
+      margin: 20px auto;
+      background-color: #28a745;
+      color: white;
+      padding: 12px 24px;
+      font-size: 18px;
+      border: none;
+      border-radius: 8px;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      width: fit-content;
+    }
+
+    .download-button:hover {
+      background-color: #218838;
+    }
+
+    @media (min-width: 768px) {
+      .movie-detail-container {
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 30px;
+        text-align: right;
+      }
+
+      .movie-description {
+        text-align: right;
+      }
+    }
+
+    @media (max-width: 767px) {
+      .movie-detail-container {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="back-link" href="index.html">← العودة إلى القائمة</a>
+
+  <div class="movie-detail-container">
+    <img src="fasel.jpg" alt="فيلم فاصل من اللحظات اللذيذة">
+    <div>
+      <h1 class="movie-title">فيلم فاصل من اللحظات اللذيذة</h1>
+      <p class="movie-description">
+        تدور أحداث الفيلم في إطار كوميدي ممزوج ببعض الرومانسية، حول درية وصالح، تقع لهما العديد من المشاكل، إلى أن تفتح بوابة بالصدفة تقودهما إلى العوالم الموازية.
+      </p>
+    </div>
+  </div>
+
+  <!-- ✅ مشغل Google Drive -->
+  <div class="video-container">
+    <iframe 
+      src="https://drive.google.com/file/d/1FY9nAFuLrnKE215rps1GF3Yb-77u2Yh5/preview" 
+      allow="autoplay" allowfullscreen>
+    </iframe>
+  </div>
+
+  <!-- ✅ زر تحميل مباشر -->
+  <a 
+    href="https://drive.google.com/uc?export=download&id=1FY9nAFuLrnKE215rps1GF3Yb-77u2Yh5" 
+    class="download-button" 
+    target="_blank">
+    ⬇️ تحميل الفيلم
+  </a>
+
+</body>
+</html>

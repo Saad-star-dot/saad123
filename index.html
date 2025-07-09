@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>مفيش ريموت؟</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background-color: #111;
+      color: #fff;
+      direction: rtl;
+      opacity: 0;
+      animation: fadeIn 1s ease-in forwards;
+    }
+
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+
+    header {
+      background-color: #1e1e1e;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo {
+      font-size: 30px;
+      font-weight: bold;
+      color: #f90;
+    }
+
+    nav {
+      display: flex;
+      gap: 15px;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 16px;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #f90;
+    }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+    }
+
+    .menu-toggle div {
+      width: 25px;
+      height: 3px;
+      background-color: white;
+    }
+
+    .categories {
+      padding: 15px 20px;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .categories button {
+      background-color: #333;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 4px;
+      color: #f90;
+      cursor: pointer;
+    }
+
+    .categories button:hover {
+      background-color: #f90;
+      color: #111;
+    }
+
+    .movie-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .movie-card {
+      background-color: #222;
+      border-radius: 8px;
+      overflow: hidden;
+      transition: transform 0.3s;
+      cursor: pointer;
+    }
+
+    .movie-card:hover {
+      transform: scale(1.05);
+    }
+
+    .movie-card img {
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+    }
+
+    .movie-info {
+      padding: 10px;
+    }
+
+    .movie-title {
+      font-size: 16px;
+      margin-bottom: 5px;
+      color: #f90;
+    }
+
+    .movie-desc {
+      font-size: 13px;
+      color: #ccc;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    footer {
+      background-color: #1e1e1e;
+      text-align: center;
+      padding: 15px;
+      font-size: 16px;
+      color: #ccc;
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        position: absolute;
+        top: 60px;
+        right: 0;
+        background-color: #1e1e1e;
+        flex-direction: column;
+        width: 200px;
+        display: none;
+      }
+
+      nav.active {
+        display: flex;
+      }
+
+      .menu-toggle {
+        display: flex;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">📺 مفيش ريموت؟</div>
+    <div class="menu-toggle" id="menu-toggle">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <nav id="nav-menu">
+      <a href="#">الرئيسية</a>
+      <a href="#">أفلام</a>
+      <a href="#">مسلسلات</a>
+      <a href="#">اتصل بنا</a>
+    </nav>
+  </header>
+
+  <section style="padding: 0 20px; text-align: center;">
+    <input type="search" id="searchInput" placeholder="ابحث عن فيلم..." style="width: 100%; max-width: 400px; padding: 10px; margin: 10px 0; border: none; border-radius: 5px; font-size: 16px;">
+    <br>
+    <button id="toggleThemeBtn" style="padding: 8px 16px; background-color: #f90; border: none; border-radius: 4px; color: #111; cursor: pointer; margin-bottom: 10px;">تغيير الوضع</button>
+    <p id="no-results" style="display:none; color:red; font-size: 18px; margin-top: 20px;">لا توجد نتائج مطابقة.</p>
+  </section>
+
+  <section class="categories">
+    <button data-category="all">الكل</button>
+    <button data-category="أكشن">أكشن</button>
+    <button data-category="دراما">دراما</button>
+    <button data-category="كوميديا">كوميديا</button>
+    <button data-category="تشويق">تشويق</button>
+    <button data-category="رعب">رعب</button>
+  </section>
+
+  <section class="movie-grid" id="movie-grid">
+    <div class="movie-card" onclick="location.href='details.html'">
+      <img src="https://zaaednews.com/wp-content/uploads/2024/12/IMG-20241219-WA0789.jpg" alt="فيلم الدشاش">
+      <div class="movie-info">
+        <div class="movie-title">الدشاش</div>
+        <div class="movie-desc">دراما - أكشن - قصة شاب شعبي يواجه الفساد.</div>
+      </div>
+    </div>
+
+    <div class="movie-card" onclick="location.href='details2.html'">
+      <img src="seko seko.jpg" alt="فيلم سيكو سيكو">
+      <div class="movie-info">
+        <div class="movie-title">سيكو سيكو</div>
+        <div class="movie-desc">دراما - كوميديا - أكشن - قصة شابان يتاجران بالممنوعات.</div>
+      </div>
+    </div>
+
+    <div class="movie-card" onclick="location.href='details3.html'">
+      <img src="face to face.jpg" alt="وش في وش">
+      <div class="movie-info">
+        <div class="movie-title">فيلم وش في وش</div>
+        <div class="movie-desc">كوميديا - دراما.</div>
+      </div>
+    </div>
+    <div class="movie-card" onclick="location.href='details4.html'">
+      <img src="playing with kids.jpg" alt="اللعب مع العيال">
+      <div class="movie-info">
+        <div class="movie-title">اللعب مع العيال</div>
+        <div class="movie-desc">كوميديا</div>
+      </div>
+    </div>
+    <div class="movie-card" onclick="location.href='details5.html'">
+      <img src="Hours_in_One_Day_poster (1).jpg" alt="بضع ساعات في يوم ما">
+      <div class="movie-info">
+        <div class="movie-title">بضع ساعات في يوم ما</div>
+        <div class="movie-desc">كوميديا - رومانسي - تشويق واثارة</div>
+      </div>
+    </div>
+    <div class="movie-card" onclick="location.href='details6.html'">
+      <img src="fasel.jpg" alt="فاصل من اللحظات اللذيذة">
+      <div class="movie-info">
+        <div class="movie-title">فاصل من اللحظات اللذيذة</div>
+        <div class="movie-desc">كوميديا - فانتازيا</div>
+      </div>
+    </div>
+    <div class="movie-card" onclick="location.href='details7.html'">
+      <img src="download (1).jpg" alt="ولاد رزق 1">
+      <div class="movie-info">
+        <div class="movie-title">ولاد رزق 1</div>
+        <div class="movie-desc">اثارة - أكشن</div>
+      </div>
+    </div>
+    <div class="movie-card" onclick="location.href='details8.html'">
+      <img src="welad 2.jpg" alt="ولاد رزق 2">
+      <div class="movie-info">
+        <div class="movie-title">ولاد رزق 2</div>
+        <div class="movie-desc">اثارة - أكشن</div>
+      </div>
+    </div>
+    <div class="movie-card" onclick="location.href='details9.html'">
+      <img src="welad 3.jpg" alt="ولاد رزق 3">
+      <div class="movie-info">
+        <div class="movie-title">ولاد رزق 3</div>
+        <div class="movie-desc">اثارة - أكشن</div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    مفيش ريموت؟ عندنا الحل! - أفلامك المفضلة دايمًا في جيبك
+  </footer>
+
+  <script>
+    const toggle = document.getElementById('menu-toggle');
+    const navMenu = document.getElementById('nav-menu');
+    toggle.addEventListener('click', () => {
+      navMenu.classList.toggle('active');
+    });
+
+    const filterButtons = document.querySelectorAll('.categories button');
+    const movies = document.querySelectorAll('.movie-card');
+    const noResults = document.getElementById('no-results');
+
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const category = button.dataset.category;
+        let matchCount = 0;
+
+        movies.forEach(movie => {
+          const desc = movie.querySelector('.movie-desc').textContent;
+          const match = category === 'all' || desc.includes(category);
+          movie.classList.toggle('hidden', !match);
+          if (match) matchCount++;
+        });
+
+        noResults.style.display = matchCount === 0 ? 'block' : 'none';
+      });
+    });
+
+    const searchInput = document.getElementById('searchInput');
+    searchInput.addEventListener('input', function () {
+      const searchValue = this.value.trim().toLowerCase();
+      let matchCount = 0;
+
+      movies.forEach(movie => {
+        const title = movie.querySelector('.movie-title').textContent.toLowerCase();
+        const desc = movie.querySelector('.movie-desc').textContent.toLowerCase();
+        const match = title.includes(searchValue) || desc.includes(searchValue);
+        movie.classList.toggle('hidden', !match);
+        if (match) matchCount++;
+      });
+
+      noResults.style.display = matchCount === 0 ? 'block' : 'none';
+    });
+
+    const toggleThemeBtn = document.getElementById("toggleThemeBtn");
+    let isLight = false;
+
+    toggleThemeBtn.addEventListener("click", () => {
+      document.body.style.backgroundColor = isLight ? "#111" : "whitesmoke";
+      document.body.style.color = isLight ? "#fff" : "#111";
+
+      document.querySelectorAll('.movie-card').forEach(card => {
+        card.style.backgroundColor = isLight ? "#222" : "#fff";
+      });
+
+      document.querySelectorAll('.categories button').forEach(btn => {
+        btn.style.backgroundColor = isLight ? "#333" : "#ddd";
+        btn.style.color = isLight ? "#f90" : "#000";
+      });
+
+      isLight = !isLight;
+    });
+  </script>
+</body>
+</html>
