@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://saad-star-dot.github.io/saad123/sitemap.xml
